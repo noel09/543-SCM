@@ -12,7 +12,11 @@ public class Repo {
     public File activity;
 
 
-    public Repo (String srcDir, String tgtDir) throws IOException {
+    public Repo () {
+    }
+
+
+    public boolean create(String srcDir, String tgtDir) throws IOException {
         src = new File(srcDir);
         tgt = new File(tgtDir);
         if (!tgt.exists())
@@ -22,14 +26,6 @@ public class Repo {
         f.mkdir();
         activity = f;
 
-        if (this.create())
-            System.out.println("Repo created.");
-        else
-            System.out.println("Failed.");
-    }
-
-
-    public boolean create() throws IOException {
         // Declare Manifesto
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
         String s = "Manifest_" + dateFormat.format(new Date());
@@ -38,6 +34,7 @@ public class Repo {
         writer.println("  Create " + src + " " + tgt);
         copyDirectory(src, tgt, writer);
         writer.close();
+        System.out.println("Repo created.");
         return true;
     }
 
