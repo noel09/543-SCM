@@ -7,9 +7,9 @@ import java.util.Date;
 
 public class Repo {
 
-    public File src;
-    public File tgt;
-    public File activity;
+    private File src;
+    private File tgt;
+    private File activity;
 
 
     public Repo () {
@@ -39,7 +39,7 @@ public class Repo {
     }
 
     // Copy Directory
-    public void copyDirectory(File source, File target, PrintWriter writer) throws IOException {
+    private void copyDirectory(File source, File target, PrintWriter writer) throws IOException {
         if (!target.exists())
             target.mkdir();
 
@@ -70,7 +70,7 @@ public class Repo {
     }
 
 
-    public String generateName(File source) throws IOException {
+    private String generateName(File source) throws IOException {
         long checksum = 0;
         FileInputStream f = new FileInputStream(source);
         int val;
